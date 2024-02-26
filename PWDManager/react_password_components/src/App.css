@@ -7,3 +7,13 @@
   width: 100%; /* Ocupa todo el ancho disponible */
   background: linear-gradient(90deg, #1A1A1A 30%, #4A4A4A 90%, #535353 100%);
 }
+
+.Login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  background: linear-gradient(90deg, #1A1A1A 30%, #4A4A4A 90%, #535353 100%);
+}

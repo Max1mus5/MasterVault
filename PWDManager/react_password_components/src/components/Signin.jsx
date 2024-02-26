@@ -15,6 +15,30 @@ const Signin = (url) => {
     password:''
   });
 
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const showMessageSuccess = (message, duration = 5000) => {
+    setSuccessMessage(message);
+    setTimeout(() => {
+      setSuccessMessage('');
+    }, duration);
+  };
+  
+  const showMessageError = (message, duration = 5000) => {
+    setErrorMessage(message);
+    setTimeout(() => {
+      setErrorMessage('');
+    }, duration);
+  };
+
+  const handleInputChange = (event)=>{
+    const value =event.target.value;
+    setFormData({
+      ...formData,
+      [event.target.name]:value,
+    });}
+
   const fetchUsers = async () => {
     try {
       const result = await url.get('/users/get/');
@@ -30,33 +54,6 @@ const Signin = (url) => {
     },1);
   },[]);
 
-  const handleInputChange = (event)=>{
-    const value =event.target.value;
-    setFormData({
-      ...formData,
-      [event.target.name]:value,
-    });}
-
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  
-
-  const showMessageSuccess = (message, duration = 5000) => {
-    setSuccessMessage(message);
-    setTimeout(() => {
-      setSuccessMessage('');
-    }, duration);
-  };
-  
-  const showMessageError = (message, duration = 5000) => {
-    setErrorMessage(message);
-    setTimeout(() => {
-      setErrorMessage('');
-    }, duration);
-  };
-    
-    
-    
     const handleFormSubmit = async (event) => {
       event.preventDefault();
       console.log('form data:', formData);
@@ -69,10 +66,10 @@ const Signin = (url) => {
           email: '',
           password: ''
         });
-        showMessageSuccess('¡User Created Successfully! 😎');
+        showMessageSuccess('User Created Successfully 😎');
       } catch (error) {
         console.error('ERROR AL CREAR USUARIO:', error);
-        showMessageError('¡User Create Error! 💀');
+        showMessageError('User Create Error 💀');
       }
     };
   
