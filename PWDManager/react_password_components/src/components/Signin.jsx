@@ -66,7 +66,7 @@ const Signin = (url) => {
           email: '',
           password: ''
         });
-        showMessageSuccess('User Created Successfully 😎');
+        showMessageSuccess('User Created Successfully 😎\nPlease Login To Verify');
       } catch (error) {
         console.error('ERROR AL CREAR USUARIO:', error);
         showMessageError('User Create Error 💀');
