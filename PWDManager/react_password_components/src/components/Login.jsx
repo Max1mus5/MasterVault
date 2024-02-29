@@ -54,8 +54,6 @@ const Login = ({url}) => {
         const data = await response.json();
         const token = data.token;
         sessionStorage.setItem('token', token);
-        // Redirigir al usuario a otra página si es necesario
-        // window.location.href = '/dashboard'; // Por ejemplo, redirige a la página de dashboard
       } else {
         // Error en el inicio de sesión
         const data = await response.json();

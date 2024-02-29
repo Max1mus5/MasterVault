@@ -7,14 +7,16 @@ import Dashboard from './components/Dashboard';
 /* 
  
 
-      <div className='Login'>
-      <Login url={baseurl}/>
-    </div> 
+     
 
       <div className="Signin">
         <Signin url={api}/>
     </div>  
- 
+
+   
+     <div className='Login'>
+      <Login url={baseurl}/>
+    </div> 
      
 
 
@@ -26,7 +28,7 @@ const App = ()=>{
 
     <div className='Dashboard'>
     <Dashboard url={baseurl}/>
-   </div>
+ </div>
    
    
   
