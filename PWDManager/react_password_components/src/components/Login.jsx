@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import '../components_css/Login.css'; // Importa tus estilos CSS
 import logo from '../img/LOGO.png'
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Login = ({url}) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -54,6 +58,7 @@ const Login = ({url}) => {
         const data = await response.json();
         const token = data.token;
         sessionStorage.setItem('token', token);
+        setTimeout(() => navigate('/Dashboard'), 500)
       } else {
         // Error en el inicio de sesión
         const data = await response.json();
@@ -86,7 +91,7 @@ const Login = ({url}) => {
           <p></p>
           
          
-          <p id='login_signin_mesagge'>Or if you havent an account <a href={''}>SIGN IN</a></p>
+          <p id='login_signin_mesagge'>Or if you havent an account <Link to='/'>SIGN IN</Link> </p>
         </div>
 
       <form onSubmit={handleFormSubmit}>

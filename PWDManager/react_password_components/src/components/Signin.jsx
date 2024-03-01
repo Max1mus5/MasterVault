@@ -4,8 +4,12 @@ import facebook_icon from '../img/signin_facebook_icon.png';
 import google_icon from '../img/signin_google_icon.png';
 import github_icon from '../img/signin_github_icon.png';
 import logo from '../img/LOGO.png'
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const Signin = (url) => { 
+  const navigate = useNavigate();
   url = url.url;
     
   const [user, setUser] = useState({});
@@ -67,6 +71,7 @@ const Signin = (url) => {
           password: ''
         });
         showMessageSuccess('User Created Successfully 😎\nPlease Login To Verify');
+        setTimeout(() => navigate('/login'), 2000)
       } catch (error) {
         console.error('ERROR AL CREAR USUARIO:', error);
         showMessageError('User Create Error 💀');
@@ -101,7 +106,7 @@ const Signin = (url) => {
             </span>
           </div>
          
-          <p id='signin_login_mesagge'>Or if you have an account <a href={''}>LOGIN</a></p>
+          <p id='signin_login_mesagge'>Or if you have an account <Link to='/login'>LOGIN</Link> </p>
         </div>
 
         <div className='form_signin'>
@@ -113,7 +118,7 @@ const Signin = (url) => {
               <input placeholder='Your Email' type='email' name='email' id='email' value={formData.email} onChange={handleInputChange} />
               <label htmlFor='password'>Password</label>
               <input placeholder='Your Password' type='password' name='password' id='password' value={formData.password} onChange={handleInputChange} />
-              <button type='submit' className='signin_button'>SignIn</button>
+              <button type='submit' className='signin_button'><Link to='/Dashboard'></Link>SignIn</button>
             </div>
           </form>
           {successMessage && <div className="message-container_successful">{successMessage}</div>}

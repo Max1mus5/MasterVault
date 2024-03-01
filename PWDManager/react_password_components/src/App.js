@@ -1,15 +1,42 @@
 import React,{useState, useEffect} from 'react';//react hooks, useState and useEffect for state and lifecycle
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import api from './API'
 import './App.css';
 import Signin from './components/Signin';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+
+const baseurl = 'http://127.0.0.1:8080'
+
+
+function Layout ({children}) {
+    return (
+        <div className='main'>
+            {children}
+        </div>
+    )
+}
+
+
+const App = () => {
+    return(
+    <BrowserRouter>
+      <Routes>
+        <Route path='/login' element={<Layout><Login url={baseurl} /></Layout>} />
+        <Route path='/' element={<Layout><Signin url={api} /></Layout>} />
+        <Route path='/Dashboard' element={<Layout><Dashboard url={baseurl} /></Layout>} />
+      </Routes>
+    </BrowserRouter>
+    )
+}
+
+export default App;
 /* 
  
 
       <div className='Dashboard'>
-    <Dashboard url={baseurl}/>
- </div>
+        <Dashboard url={baseurl}/>
+      </div>
    
 
       <div className="Signin">
@@ -25,18 +52,3 @@ import Dashboard from './components/Dashboard';
 
 
     */
-const App = ()=>{
-  const baseurl = 'http://127.0.0.1:8080'
-  return(
-   
-    <div className='Dashboard'>
-    <Dashboard url={baseurl}/>
- </div>
-   
-    
-  
-  )
-
-}
-
-export default App;

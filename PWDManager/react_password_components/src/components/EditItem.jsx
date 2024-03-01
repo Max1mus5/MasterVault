@@ -6,6 +6,7 @@ function EditItem({ url, onClose, editPasswordProp }) {
   const [name, setName] = useState('');
   const [urlValue, setUrlValue] = useState('');
   const [passwordLength, setPasswordLength] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const token = sessionStorage.getItem('token');
 
   useEffect(() => {
@@ -69,31 +70,36 @@ function EditItem({ url, onClose, editPasswordProp }) {
   };
 
   const handleDeletePassword = async (event) => {
-    event.preventDefault();
     const deleteId = editPasswordProp.id;
-    console.log('deleteId:', deleteId);
-
     try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+        const config = {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ password_id: deleteId })
+        };
 
-      const response = await axios.delete(
-        `${url}/passwords/delete`,
-        { data: { password_id: deleteId } },
-        config
-      );
+        const response = await fetch(`${url}/passwords/delete`, config);
+        
+        if (!response.ok) {
+            throw new Error('Error Deleting Password');
+        }
 
-      console.log(response.data);
-      onClose();
+        const data = await response.json();
+        console.log(data);
+        onClose();
+        /* recargar pagina */
+        window.location.reload();
     } catch (error) {
-      console.error('Error Deleting Password', error);
+        console.error(error.message);
     }
 };
 
-  
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div className='edit_item_container'>
@@ -113,6 +119,28 @@ function EditItem({ url, onClose, editPasswordProp }) {
             <label htmlFor='edit_item_form_input_url'>URL</label>
             <input placeholder="www.yourURL.com" type='url' id='edit_item_form_input_url' name='edit_item_form_input_url' value={urlValue} onChange={(e) => setUrlValue(e.target.value)} required />
           </div>
+
+          {editPasswordProp && (
+              <div className='edit_item_form_input'>
+                <label htmlFor='edit_item_form_input_password'>Password</label>
+                <div className='password_show'>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    id='edit_item_form_input_password'
+                    name='edit_item_form_input_password'
+                    value={editPasswordProp.password}
+                    readOnly
+                  />
+                  <button type='button' onClick={toggleShowPassword}>
+                    {showPassword ? 
+                      <span class="material-symbols-outlined password_view">visibility_off</span> :
+                      <span class="material-symbols-outlined password_view">visibility</span>
+                    }
+                  </button>
+                </div>
+              </div>
+            )}
+
 
           <div className='edit_item_form_input'>
             <div className='edit_item_form_input'>

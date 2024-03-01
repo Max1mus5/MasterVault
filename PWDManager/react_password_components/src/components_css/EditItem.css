@@ -82,6 +82,26 @@
   font-family: Arial, Helvetica, sans-serif ;
 }
 
+.password_show button{
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: ease-in-out 1s;
+  margin: 0px;
+}
+
+.password_show{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif ;
+  width: 100%;
+  
+}
+
 .edit_item_form_input_generate_password {
   background-color: transparent;
   color: #fff;

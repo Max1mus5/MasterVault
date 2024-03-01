@@ -3,11 +3,14 @@ import axios from 'axios';
 import '../components_css/Dashboard.css';
 import logo from '../img/LOGO.png'
 import Edit from './EditItem';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 
 function Dashboard({ url }) {
+    const navigate = useNavigate();
     const editUrl=url;
     const [passwords, setPasswords] = useState([]);
     const [noPasswordsMessage, setNoPasswordsMessage] = useState('');
@@ -60,6 +63,10 @@ function Dashboard({ url }) {
             console.error('Error fetching passwords:', error);
         }
     };
+    const handleLogout = () => {
+        sessionStorage.removeItem('token');
+        setTimeout(() => navigate('/login'), 500)
+      }
 
     return (
         <div className='dashboard_container'>
@@ -72,7 +79,7 @@ function Dashboard({ url }) {
                     <h1 id='dashboard_main_title'>MasterVault</h1>
                 </div>
                 <div className='dashboard_logout'>
-                    <a href='/'>Logout</a>
+                    <a onClick={handleLogout} href='/'>Logout</a>
                 </div>
             </nav>
             <div className='passwords_container'>
