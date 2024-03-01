@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 800px;
   height: 80%;
   border-radius: 10%;
   background: rgba(0, 0, 0, 0.8);
@@ -15,7 +15,6 @@
   backdrop-filter: blur(5px);
   z-index: 1;
 }
-
 
 .edit_item_header{
   position: absolute;
@@ -67,6 +66,9 @@
   padding: 8px;
   border: 1px solid #8A8A8A;
   border-radius: 3px;
+}
+.edit_item_form_input.password_input :required{
+  display: none;
 }
 
 #edit_item_form_input_password{
@@ -134,3 +136,13 @@
   border-radius: 5px;
 }
 
+
+@media screen and (max-width: 800px) {
+  .edit_item_container {
+    width: 90%;
+  }
+  .edit_item_form_container {
+    width: 80%;
+  }
+  
+}

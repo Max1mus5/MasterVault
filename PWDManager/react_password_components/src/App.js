@@ -7,7 +7,10 @@ import Dashboard from './components/Dashboard';
 /* 
  
 
-     
+      <div className='Dashboard'>
+    <Dashboard url={baseurl}/>
+ </div>
+   
 
       <div className="Signin">
         <Signin url={api}/>
@@ -25,12 +28,12 @@ import Dashboard from './components/Dashboard';
 const App = ()=>{
   const baseurl = 'http://127.0.0.1:8080'
   return(
-
+   
     <div className='Dashboard'>
     <Dashboard url={baseurl}/>
  </div>
    
-   
+    
   
   )
 

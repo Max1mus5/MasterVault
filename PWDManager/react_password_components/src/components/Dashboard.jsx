@@ -9,24 +9,30 @@ import Edit from './EditItem';
 
 function Dashboard({ url }) {
     const editUrl=url;
-    console.log(editUrl);
     const [passwords, setPasswords] = useState([]);
     const [noPasswordsMessage, setNoPasswordsMessage] = useState('');
     const [showEditItem, setShowEditItem] = useState(false); 
-    const [message, setMessage] = useState('');	
+    const [selectedPassword, setSelectedPassword] = useState(null);
+
     useEffect(() => {
         fetchPasswords();
     }, []);
 
     const handleCloseEditItem = () => {
         setShowEditItem(false);
+        setSelectedPassword(null);
       }
 
 
     const handleAddPasswordClick = () => {
         setShowEditItem(true); 
       };
-
+    
+    const handlePasswordClick = (password) => {
+        setSelectedPassword(password);
+        console.log(password.id)
+        setShowEditItem(true);
+    };
       
     const fetchPasswords = async () => {
         try {
@@ -57,7 +63,7 @@ function Dashboard({ url }) {
 
     return (
         <div className='dashboard_container'>
-            {showEditItem && <Edit url={editUrl} onClose={handleCloseEditItem}  /> }
+            {showEditItem && <Edit url={editUrl} onClose={handleCloseEditItem} editPasswordProp={selectedPassword}  /> }
             <nav className='dashboard_navbar'>
                 <div className='dashboard_logo_image'>
                     <img src={logo} alt='logo' />
@@ -81,8 +87,11 @@ function Dashboard({ url }) {
                 <div className='passwords_list'>
                     <ul className='password_item'>
                         {passwords.slice(0).reverse().map((password, index) => (
-                            <li className='password' key={index}> 
-                                <div id='password_item_url'> {password.URL}</div>
+                            <li className='password' key={index} onClick={()=> handlePasswordClick(password)}>   
+                                <div className='url_item'>
+                                    <div> <img src={`http://www.google.com/s2/favicons?domain=${password.URL}`} alt="iconURL" /></div>
+                                    <div id='password_item_url' className='password_item_url'> <p>{password.URL}</p> </div>
+                                </div>
                                 <div id='password_item_title'> {password.title}</div>
                             </li>
                         ))}
