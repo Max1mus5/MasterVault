@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# [MasterVault](https://mastervault.vercel.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+![MasterVault](
+  ./src/img/MasterVault_Slogan.png
+)
 
-In the project directory, you can run:
+MasterVault is an application designed to allow users to store and manage their passwords securely and conveniently. With a focus on security and privacy, MasterVault provides a protected environment where users can store their sensitive passwords in an encrypted manner and easily access them whenever they need them. The application also includes functionalities such as generating secure passwords and editing existing password information. With MasterVault, users can keep their digital credentials protected and organized, giving them peace of mind and control over their online security.
 
-### `npm start`
+## Next Update
+- Mobile Version 😶‍🌫️
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+------------------------
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Table of Contents
 
-### `npm test`
+1. [Installation](#installation)
+2. [Use](#use)
+3. [Characteristics](#characteristics)
+4. [Technologies used](#technologies-used)
+5. [Contribution](#contribution)
+6. [License](#license)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
+```bash
+## Clone the repository
+git clone https://github.com/Max1mus5/Password-Manager-Front.git
 
-### `npm run build`
+# Enter the project directory
+cd react_password_components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Install the dependencies
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Start the application
+npm start
+```
+Remember to: 
+- Run the backend server, or use the web service [here](https://mastervault-backend.onrender.com/)😎
+- Change the URL in the file `src/API.js` and in `src/App.js` the *'baseUrl'* to the URL of the backend server.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
 
-### `npm run eject`
+1. **Password Management**: Users can securely store and manage their passwords.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Login**: Users can login to the application using their user name and password.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Add Passwords**: Users can add new passwords to their vault.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **View Passwords**: Users can view the passwords stored in their vault.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. **Edit Passwords**: Users can edit existing passwords in their vault.
 
-## Learn More
+6. **Secure Password Generation**: The application can generate secure passwords for users.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Technologies Used
+The following technologies were used to develop this application:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **React**: A JavaScript library for building user interfaces.
 
-### Code Splitting
+2. **Backend**: The application connects to the [MasterVault Backend](https://github.com/Max1mus5/FINAL-BACKEND-PROJECT.git)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Axios**: A promise-based HTTP client for the browser and node.js.
 
-### Analyzing the Bundle Size
+4. **React Router**: A library that allows navigation between components in a React application.
+-----------------------
+# Contribution
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Thanks for considering contributing to our project! Here are some guidelines on how you can help:
 
-### Making a Progressive Web App
+## Ways to Contribute
+1. **Pull Requests**:
+   - Fork the project.
+   - Create a new branch (`git checkout -b feature/amazing-feature`).
+   - Make your changes.
+   - Commit your changes (`git commit -am 'Add some amazing feature'`).
+   - Push to the branch (`git push origin feature/amazing-feature`).
+   - Open a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. **Report Bugs (Issues)**:
+   - If you encounter a bug or problem, please open an issue in our repository.
+   - Provide as much detail as possible, including how to replicate the problem.
 
-### Advanced Configuration
+3. **Comments and Suggestions**:
+   - We appreciate your comments and suggestions on how to improve the project.
+   - If you have an idea for a new feature or improvement, feel free to share it.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Thank you for your interest in improving our project!
 
-### Deployment
+-----------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
+MasterVault is licensed under the MIT license.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*Copyright (c) 2024 Jeronimo Riveros*.
