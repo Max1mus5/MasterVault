@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../components_css/EditItem.css';
 
@@ -7,6 +7,8 @@ function EditItem({ url, onClose, editPasswordProp }) {
   const [urlValue, setUrlValue] = useState('');
   const [passwordLength, setPasswordLength] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const passwordInputRef = useRef(null); // Ref for password input
+
   const token = sessionStorage.getItem('token');
 
   useEffect(() => {
@@ -64,10 +66,23 @@ function EditItem({ url, onClose, editPasswordProp }) {
 
       console.log(response.data);
       onClose();
+      
     } catch (error) {
       console.error('Error creating password:', error);
     }
   };
+
+  const handleCopyPassword = () => {
+    const password = passwordInputRef.current.value;
+    navigator.clipboard.writeText(password)
+      .then(() => {
+        console.log('Password copied to clipboard');
+      })
+      .catch(err => {
+        console.error('Failed to copy password:', err);
+      });
+  };
+
 
   const handleDeletePassword = async (event) => {
     const deleteId = editPasswordProp.id;
@@ -90,8 +105,6 @@ function EditItem({ url, onClose, editPasswordProp }) {
         const data = await response.json();
         console.log(data);
         onClose();
-        /* recargar pagina */
-        window.location.reload();
     } catch (error) {
         console.error(error.message);
     }
@@ -125,17 +138,21 @@ function EditItem({ url, onClose, editPasswordProp }) {
                 <label htmlFor='edit_item_form_input_password'>Password</label>
                 <div className='password_show'>
                   <input
+                    ref={passwordInputRef} 
                     type={showPassword ? 'text' : 'password'}
-                    id='edit_item_form_input_password'
                     name='edit_item_form_input_password'
                     value={editPasswordProp.password}
                     readOnly
                   />
                   <button type='button' onClick={toggleShowPassword}>
-                    {showPassword ? 
-                      <span class="material-symbols-outlined password_view">visibility_off</span> :
+                    {showPassword ? (
+                      <span class="material-symbols-outlined password_view">visibility_off</span>
+                    ) : (
                       <span class="material-symbols-outlined password_view">visibility</span>
-                    }
+                    )}
+                  </button>
+                  <button type='button' onClick={handleCopyPassword}>
+                    <span class="material-symbols-outlined password_view">content_copy</span>
                   </button>
                 </div>
               </div>

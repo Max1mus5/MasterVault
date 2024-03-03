@@ -1,10 +1,11 @@
-import React,{useState, useEffect} from 'react';//react hooks, useState and useEffect for state and lifecycle
+import React from 'react';//react hooks, useState and useEffect for state and lifecycle
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import api from './API'
 import './App.css';
 import Signin from './components/Signin';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+
 
 const baseurl = 'http://127.0.0.1:8080'
 
@@ -22,9 +23,11 @@ const App = () => {
     return(
     <BrowserRouter>
       <Routes>
+
+        <Route path='/Dashboard' element={<Layout><Dashboard url={baseurl} /></Layout>} />
         <Route path='/login' element={<Layout><Login url={baseurl} /></Layout>} />
         <Route path='/' element={<Layout><Signin url={api} /></Layout>} />
-        <Route path='/Dashboard' element={<Layout><Dashboard url={baseurl} /></Layout>} />
+       
       </Routes>
     </BrowserRouter>
     )

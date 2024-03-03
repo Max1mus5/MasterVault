@@ -17,20 +17,23 @@ function Dashboard({ url }) {
     const [showEditItem, setShowEditItem] = useState(false); 
     const [selectedPassword, setSelectedPassword] = useState(null);
 
+
+    const handleAddPasswordClick = () => {
+        setShowEditItem(true); 
+      };
+
     useEffect(() => {
+        console.log('fetching passwords');
         fetchPasswords();
     }, []);
 
     const handleCloseEditItem = () => {
         setShowEditItem(false);
         setSelectedPassword(null);
-      }
-
-
-    const handleAddPasswordClick = () => {
-        setShowEditItem(true); 
+        fetchPasswords();
       };
-    
+
+
     const handlePasswordClick = (password) => {
         setSelectedPassword(password);
         console.log(password.id)
