@@ -7,7 +7,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
 
-const baseurl = 'http://127.0.0.1:8080'
+const baseurl = 'http://0.0.0.0:10000'
 
 
 function Layout ({children}) {
