@@ -77,7 +77,13 @@ const Signin = (url) => {
         showMessageError('User Create Error 💀');
       }
     };
-  
+
+    const popToMyGitHub = () => {
+      showMessageSuccess('GOT YOU 😁', 2000);
+      /* open in a new window and wait 2s */
+      setTimeout(() => window.open(' https://github.com/Max1mus5?tab=repositories'), 1000);
+    }
+
   return(
     <div className="Signin_container">
       <nav className='signin_navbar'>
@@ -101,7 +107,7 @@ const Signin = (url) => {
             <span className='signin_icon'> 
               <img src={google_icon} alt='google_icon' />
             </span>
-            <span className='signin_icon'> 
+            <span className='signin_icon' onClick={popToMyGitHub}> 
               <img src={github_icon} alt='github_icon' />
             </span>
           </div>
