@@ -2,7 +2,7 @@
 
 
 ![MasterVault](
-  ./src/img/MasterVault_Slogan.png
+  ./react_password_components/src/img/MasterVault_Slogan.png
 )
 
 MasterVault is an application designed to allow users to store and manage their passwords securely and conveniently. With a focus on security and privacy, MasterVault provides a protected environment where users can store their sensitive passwords in an encrypted manner and easily access them whenever they need them. The application also includes functionalities such as generating secure passwords and editing existing password information. With MasterVault, users can keep their digital credentials protected and organized, giving them peace of mind and control over their online security.
