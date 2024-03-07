@@ -104,6 +104,7 @@ function EditItem({ url, onClose, editPasswordProp }) {
 
         const data = await response.json();
         console.log(data);
+        window.location.reload();
         onClose();
     } catch (error) {
         console.error(error.message);

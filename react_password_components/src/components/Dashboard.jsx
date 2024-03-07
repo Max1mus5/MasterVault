@@ -69,7 +69,7 @@ function Dashboard({ url }) {
     const handleLogout = () => {
         sessionStorage.removeItem('token');
         setTimeout(() => navigate('/login'), 500)
-      }
+      };
 
     return (
         <div className='dashboard_container'>
@@ -93,8 +93,8 @@ function Dashboard({ url }) {
                     </button>
                 </div>
                
-                {noPasswordsMessage && <h2 id='no_password_message'>{noPasswordsMessage}</h2>}
                 <div className='passwords_list'>
+                {noPasswordsMessage && <h2 id='no_password_message'>{noPasswordsMessage}</h2>}
                     <ul className='password_item'>
                         {passwords.slice(0).reverse().map((password, index) => (
                             <li className='password' key={index} onClick={()=> handlePasswordClick(password)}>   

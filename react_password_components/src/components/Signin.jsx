@@ -21,6 +21,7 @@ const Signin = (url) => {
 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [formMessage, setFormMessage] = useState('');
 
   const showMessageSuccess = (message, duration = 5000) => {
     setSuccessMessage(message);
@@ -71,10 +72,17 @@ const Signin = (url) => {
           password: ''
         });
         showMessageSuccess('User Created Successfully 😎\nPlease Login To Verify');
-        setTimeout(() => navigate('/login'), 2000)
+        setTimeout(() => navigate('/login'), 3000)
       } catch (error) {
         console.error('ERROR AL CREAR USUARIO:', error);
+        if (error.response.data.detail === 'Username already exists') {
+          showMessageError('Username already exists');
+        } else if(error.response.data.detail === 'Email already exists'){
+          showMessageError('Email already exists');
+        }else {
         showMessageError('User Create Error 💀');
+        }
+       
       }
     };
 
@@ -83,6 +91,14 @@ const Signin = (url) => {
       /* open in a new window and wait 2s */
       setTimeout(() => window.open(' https://github.com/Max1mus5?tab=repositories'), 1000);
     }
+
+    const showTemporaryMessage = (message, timeout = 5000) => {
+      setFormMessage(message);
+        setTimeout(() => {
+        setFormMessage('');
+      }, timeout);
+    };
+    
 
   return(
     <div className="Signin_container">
@@ -123,7 +139,8 @@ const Signin = (url) => {
               <label htmlFor='email'>Email</label>
               <input placeholder='Your Email' type='email' name='email' id='email' value={formData.email} onChange={handleInputChange} />
               <label htmlFor='password'>Password</label>
-              <input placeholder='Your Password' type='password' name='password' id='password' value={formData.password} onChange={handleInputChange} />
+              <input placeholder='Your Password' type='password' name='password' id='password' value={formData.password} onChange={handleInputChange} onClick={() => showTemporaryMessage('Remember to use at least 8 Caracters 💪')}/>
+              {formMessage && <div className="message-container">{formMessage}</div>}
               <button type='submit' className='signin_button'><Link to='/Dashboard'></Link>SignIn</button>
             </div>
           </form>
