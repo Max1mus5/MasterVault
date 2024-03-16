@@ -89,7 +89,7 @@ const Signin = (url) => {
     const popToMyGitHub = () => {
       showMessageSuccess('GOT YOU 😁', 2000);
       /* open in a new window and wait 2s */
-      setTimeout(() => window.open(' https://github.com/Max1mus5?tab=repositories'), 1000);
+      setTimeout(() => window.open('https://github.com/Max1mus5'), 1000);
     }
 
     const showTemporaryMessage = (message, timeout = 5000) => {
